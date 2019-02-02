@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.fatla.mooncatcanvas.ModePractice">
+
+    <ImageSwitcher
+        android:id="@+id/imageSwitcher"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/zoomControls" />
+
+            <com.example.fatla.mooncatcanvas.CanvasView
+                android:id="@+id/canvas"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_above="@+id/plus"
+                android:layout_below="@+id/redo" />
+    <ZoomControls
+        android:id="@+id/zoomControls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/canvas"
+        android:layout_alignParentTop="true" />
+
+    <Button
+        android:id="@+id/clear"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/canvas"
+        android:layout_toLeftOf="@+id/redo"
+        android:layout_toStartOf="@+id/redo"
+        android:text="CLEAR" />
+
+    <Button
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:id="@+id/plus"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="+"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/minus"
+        android:layout_toStartOf="@+id/minus" />
+    <Button
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:id="@+id/minus"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="-"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/undo"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/redo"
+        android:layout_alignBottom="@+id/redo"
+        android:layout_toEndOf="@+id/redo"
+        android:layout_toRightOf="@+id/redo"
+        android:text="undo" />
+
+
+    <TextView
+        android:id="@+id/dotSize_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/colorPicker"
+        android:layout_alignBottom="@+id/colorPicker"
+        android:layout_marginEnd="19dp"
+        android:layout_marginRight="19dp"
+        android:layout_toLeftOf="@+id/plus"
+        android:layout_toStartOf="@+id/plus"
+        android:text="○" />
+
+    <Button
+        android:id="@+id/b_prev"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:text="←" />
+
+    <Button
+        android:id="@+id/b_next"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/b_prev"
+        android:layout_toRightOf="@+id/b_prev"
+        android:text="→" />
+
+    <Button
+        android:id="@+id/colorPicker"
+        android:layout_width="40dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/b_next"
+        android:layout_toRightOf="@+id/b_next"
+        android:text="C" />
+
+    <Button
+        android:id="@+id/redo"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/brush"
+        android:layout_toRightOf="@+id/brush"
+        android:text="Redo" />
+
+    <Button
+        android:id="@+id/erase"
+        android:layout_width="40dp"
+        android:layout_height="50dp"
+
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/colorPicker"
+        android:layout_toRightOf="@+id/colorPicker"
+        android:text="E" />
+
+    <Button
+        android:id="@+id/brush"
+        android:layout_width="40dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/erase"
+        android:layout_toRightOf="@+id/erase"
+        android:text="B" />
+
+    <Button
+        android:id="@+id/sketch"
+        android:layout_width="40dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/brush"
+        android:layout_toRightOf="@+id/brush"
+        android:text="K" />
+
+</RelativeLayout>

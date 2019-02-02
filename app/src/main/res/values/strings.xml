@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MoonCatCanvas</string>
+    <string name="title_activity_canvas_view">canvasView</string>
+</resources>
