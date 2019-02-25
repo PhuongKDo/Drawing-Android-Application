@@ -2,7 +2,6 @@
 ## Developer: PhuongKDo
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/46738881/52170778-4ca29d00-2716-11e9-8a96-7b7a3788b48c.png">
   <img src="https://user-images.githubusercontent.com/46738881/52170776-4ca29d00-2716-11e9-98a0-e34ff62b78e3.png">
   <img src="https://user-images.githubusercontent.com/46738881/52170779-4d3b3380-2716-11e9-81a4-2921d794f73e.png">
   <img src="https://user-images.githubusercontent.com/46738881/52170777-4ca29d00-2716-11e9-86a6-d575b55ddacb.png">
