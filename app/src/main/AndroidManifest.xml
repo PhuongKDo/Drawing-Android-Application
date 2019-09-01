@@ -21,10 +21,9 @@
         </activity>
         <activity android:name=".ModeView" />
         <activity android:name=".ModePractice" />
-        <activity android:name=".Canvas" />
-        <activity android:name=".canvasView" />
-
-        <activity android:name=".ModeDrawAlong"></activity>
+        <activity android:name=".ModeDrawAlong" />
+        <activity android:name=".ModePicker" />
+        <activity android:name=".CanvasView" />
     </application>
 
 </manifest>

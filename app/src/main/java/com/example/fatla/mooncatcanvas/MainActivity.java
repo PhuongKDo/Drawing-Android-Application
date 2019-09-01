@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -13,30 +13,69 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button bP = (Button)findViewById(R.id.button);
-        Button bV = (Button)findViewById(R.id.button2);
-        Button bA = (Button)findViewById(R.id.button3);
+        ImageView btnImage1 = (ImageView)findViewById(R.id.image1);
+        ImageView btnImage2 = (ImageView)findViewById(R.id.image2);
+        ImageView btnImage3 = (ImageView) findViewById(R.id.image3);
+        ImageView btnImage4 = (ImageView)findViewById(R.id.image4);
+        ImageView btnImage5 = (ImageView)findViewById(R.id.image5);
+        ImageView btnImage6 = (ImageView)findViewById(R.id.image6);
+
         //listener
-        bV.setOnClickListener(new View.OnClickListener() {
+
+        btnImage1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent Mview = new Intent(MainActivity.this, ModeView.class);
-                startActivity(Mview);
-            }});
-        bP.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent Mpract = new Intent(MainActivity.this, ModePractice.class);
-                startActivity(Mpract);
-            }
-        });
-        bA.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent Mpract = new Intent(MainActivity.this, ModeDrawAlong.class);
-                startActivity(Mpract);
+            public void onClick(View view) {
+                Intent Mpicker= new Intent(MainActivity.this, ModePicker.class);
+                startActivity(Mpicker);
             }
         });
 
+        btnImage1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent Mpicker= new Intent(MainActivity.this, ModePicker.class);
+                startActivity(Mpicker);
+            }
+        });
+
+        btnImage2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent Mpicker= new Intent(MainActivity.this, ModePicker.class);
+                startActivity(Mpicker);
+            }
+        });
+
+        btnImage3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent Mpicker= new Intent(MainActivity.this, ModePicker.class);
+                startActivity(Mpicker);
+            }
+        });
+
+        btnImage4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent Mpicker= new Intent(MainActivity.this, ModePicker.class);
+                startActivity(Mpicker);
+            }
+        });
+
+        btnImage5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent Mpicker= new Intent(MainActivity.this, ModePicker.class);
+                startActivity(Mpicker);
+            }
+        });
+
+        btnImage6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent Mpicker= new Intent(MainActivity.this, ModePicker.class);
+                startActivity(Mpicker);
+            }
+        });
     }
 }
