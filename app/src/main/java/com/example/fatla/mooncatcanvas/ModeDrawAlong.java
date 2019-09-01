@@ -1,20 +1,23 @@
 package com.example.fatla.mooncatcanvas;
 
 import android.content.Context;
-import android.graphics.Color;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageSwitcher;
-import android.graphics.Canvas;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 import android.widget.ZoomControls;
+
+import java.io.File;
+import java.io.FileOutputStream;
 
 import yuku.ambilwarna.AmbilWarnaDialog;
 
@@ -35,7 +38,7 @@ public class ModeDrawAlong extends AppCompatActivity implements View.OnClickList
 
     //////////////////////
 
-    private Button bMinus, bPlus, undo2, clear2,redo2, colorPicker2, erase2, brush2;
+    private Button bMinus, bPlus, undo2, clear2,redo2, colorPicker2, erase2, brush2, saveBtn2;
     private TextView tv_dotSize;
     private static final int DOT_SIZE_INCREMENT = 1;
     private CanvasView canvasView;
@@ -82,6 +85,9 @@ public class ModeDrawAlong extends AppCompatActivity implements View.OnClickList
         //-----redo-----///
         redo2 = (Button) findViewById(R.id.redo);
         redo2.setOnClickListener(this);
+
+        saveBtn2 = (Button) findViewById(R.id.saveBtn);
+        saveBtn2.setOnClickListener(this);
 
         //-----brush----///
         brush2 = (Button) findViewById(R.id.brush);
@@ -193,6 +199,8 @@ public class ModeDrawAlong extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         Button _b = (Button) findViewById(view.getId());
         switch (view.getId()){
+            case R.id.saveBtn: saveCanvas();
+                break;
             case R.id.colorPicker: openColorPicker();
                 break;
             case R.id.redo: canvasView.onClickRedo();
@@ -222,7 +230,38 @@ public class ModeDrawAlong extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    public void saveCanvas() {
 
+        String root = Environment.getExternalStorageDirectory().toString();
+
+        // the directory where the signature will be saved
+        File myDir = new File(root + "/saved_signature");
+
+        // make the directory if it does not exist yet
+        if (!myDir.exists()) {
+            myDir.mkdirs();
+        }
+
+        // set the file name of your choice
+        String fname = "signature.png";
+
+        // in our case, we delete the previous file, you can remove this
+        File file = new File(myDir, fname);
+        if (file.exists()) {
+            file.delete();
+        }
+
+        try {
+
+            // save the signature
+            FileOutputStream out = new FileOutputStream(file);
+            canvasView.mBitmap.compress(Bitmap.CompressFormat.PNG, 90, out);
+            out.flush();
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     ////////////////////////////////////////////////////////////////////////
     ///                     clicking area end

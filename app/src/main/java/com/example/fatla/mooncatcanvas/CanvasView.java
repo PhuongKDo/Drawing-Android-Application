@@ -2,22 +2,22 @@ package com.example.fatla.mooncatcanvas;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BlurMaskFilter;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class CanvasView extends View implements View.OnTouchListener {
+    private View main;
+    private ImageView imageView;
 
     //setting for the dot size
     private final int DEFAULT_DOT_SIZE = 6;
@@ -37,19 +37,18 @@ public class CanvasView extends View implements View.OnTouchListener {
     private ArrayList<Paint> mPaints;
 
     //undo paths
-    private  ArrayList<Path> undonePaths = new ArrayList<Path>();
+    private ArrayList<Path> undonePaths = new ArrayList<Path>();
 
     // canvas details
     public int width;
     public int height;
-    private Bitmap mBitmap;
+    public Bitmap mBitmap;
     private Canvas mCanvas;
     private Path mPath;
     private Paint mPaint;
     private float mX, mY, mOldX, mOldY;
     private static final float TOLERANCE = 5;
     public int DEFAULT_COLOR = Color.BLACK;
-
 
     Context context;
 
