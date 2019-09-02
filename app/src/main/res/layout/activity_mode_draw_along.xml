@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient"
+    android:background="@drawable/animatedbg"
     tools:context="com.example.fatla.mooncatcanvas.ModeDrawAlong">
 
     <ImageSwitcher
@@ -19,6 +19,7 @@
     </ImageSwitcher>
 
     <com.example.fatla.mooncatcanvas.CanvasView
+        android:background="#fff"
         android:id="@+id/canvas"
         android:layout_width="match_parent"
         android:layout_height="300dp"

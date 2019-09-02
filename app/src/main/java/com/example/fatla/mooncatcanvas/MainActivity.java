@@ -15,25 +15,13 @@ public class MainActivity extends AppCompatActivity{
 
         ImageView btnImage1 = (ImageView)findViewById(R.id.image1);
         ImageView btnImage2 = (ImageView)findViewById(R.id.image2);
-        ImageView btnImage3 = (ImageView) findViewById(R.id.image3);
-        ImageView btnImage4 = (ImageView)findViewById(R.id.image4);
-        ImageView btnImage5 = (ImageView)findViewById(R.id.image5);
-        ImageView btnImage6 = (ImageView)findViewById(R.id.image6);
 
         //listener
 
         btnImage1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent Mpicker= new Intent(MainActivity.this, ModePicker.class);
-                startActivity(Mpicker);
-            }
-        });
-
-        btnImage1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent Mpicker= new Intent(MainActivity.this, ModePicker.class);
+                Intent Mpicker= new Intent(MainActivity.this, ModeList.class);
                 startActivity(Mpicker);
             }
         });
@@ -41,39 +29,7 @@ public class MainActivity extends AppCompatActivity{
         btnImage2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent Mpicker= new Intent(MainActivity.this, ModePicker.class);
-                startActivity(Mpicker);
-            }
-        });
-
-        btnImage3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent Mpicker= new Intent(MainActivity.this, ModePicker.class);
-                startActivity(Mpicker);
-            }
-        });
-
-        btnImage4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent Mpicker= new Intent(MainActivity.this, ModePicker.class);
-                startActivity(Mpicker);
-            }
-        });
-
-        btnImage5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent Mpicker= new Intent(MainActivity.this, ModePicker.class);
-                startActivity(Mpicker);
-            }
-        });
-
-        btnImage6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent Mpicker= new Intent(MainActivity.this, ModePicker.class);
+                Intent Mpicker= new Intent(MainActivity.this, ModeList.class);
                 startActivity(Mpicker);
             }
         });

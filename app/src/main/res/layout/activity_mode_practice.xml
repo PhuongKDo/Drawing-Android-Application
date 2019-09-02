@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient"
+    android:background="@drawable/animatedbg"
     tools:context="com.example.fatla.mooncatcanvas.ModePractice">
 
     <ImageSwitcher
@@ -16,6 +16,7 @@
         android:layout_below="@+id/zoomControls" />
 
             <com.example.fatla.mooncatcanvas.CanvasView
+                android:background="#fff"
                 android:id="@+id/canvas"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
@@ -119,7 +120,6 @@
         android:id="@+id/erase"
         android:layout_width="40dp"
         android:layout_height="50dp"
-
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/colorPicker"
         android:layout_toRightOf="@+id/colorPicker"
@@ -136,11 +136,12 @@
 
     <Button
         android:id="@+id/sketch"
-        android:layout_width="40dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/brush"
         android:layout_toRightOf="@+id/brush"
         android:text="K" />
 
 </RelativeLayout>
+

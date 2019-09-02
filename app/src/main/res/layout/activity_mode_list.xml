@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/animatedbg"
+    tools:context="com.example.fatla.mooncatcanvas.ModeList">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:rowCount="2"
+        android:columnCount="1"
+        android:alignmentMode="alignMargins"
+        android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="0dp"
+        app:cardMaxElevation="1dp"
+        app:cardElevation="0.7dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        app:contentPaddingBottom="0dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true"
+        android:id="@+id/cardView">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:background="@drawable/border"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:id="@+id/list1"
+
+                android:contentDescription="CardImageViewDesc" />
+
+            <TextView
+                android:background="#dbdbdb"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/list1"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:text="Level: Beginner . . . 16 Steps"
+                android:layout_marginBottom="15dp"
+                android:textSize="18sp" />
+        </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="0dp"
+            app:cardMaxElevation="1dp"
+            app:cardElevation="0.7dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="30dp"
+            android:id="@+id/cardView2">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:background="@drawable/border"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:id="@+id/list2"
+                    android:contentDescription="CardImageViewDesc" />
+
+                <TextView
+                    android:background="#dbdbdb"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/list2"
+                    android:fontFamily="sans-serif"
+                    android:gravity="center"
+                    android:text="Level: Beginner . . . 16 Steps"
+                    android:layout_marginBottom="15dp"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="0dp"
+            app:cardMaxElevation="1dp"
+            app:cardElevation="0.7dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="30dp"
+            android:id="@+id/cardView3">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:background="@drawable/border"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:id="@+id/list3"
+                    android:contentDescription="CardImageViewDesc" />
+
+                <TextView
+                    android:background="#dbdbdb"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/list3"
+                    android:fontFamily="sans-serif"
+                    android:gravity="center"
+                    android:text="Level: Beginner . . . 16 Steps"
+                    android:layout_marginBottom="15dp"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+    </GridLayout>
+
+</ScrollView>

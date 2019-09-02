@@ -24,6 +24,7 @@
         <activity android:name=".ModeDrawAlong" />
         <activity android:name=".ModePicker" />
         <activity android:name=".CanvasView" />
+        <activity android:name=".ModeList" />
     </application>
 
 </manifest>
