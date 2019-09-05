@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/animatedbg"
+    android:background="@drawable/gradient4"
     tools:context="com.example.fatla.mooncatcanvas.ModePractice">
 
     <ImageSwitcher
@@ -68,7 +68,6 @@
         android:layout_toEndOf="@+id/redo"
         android:layout_toRightOf="@+id/redo"
         android:text="undo" />
-
 
     <TextView
         android:id="@+id/dotSize_tv"

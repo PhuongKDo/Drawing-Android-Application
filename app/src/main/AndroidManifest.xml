@@ -25,6 +25,10 @@
         <activity android:name=".ModePicker" />
         <activity android:name=".CanvasView" />
         <activity android:name=".ModeList" />
+        <activity android:name=".DrawingView" />
+        <activity android:name=".ModeSolo" />
+        <activity android:name=".ModeSoloDraw" />
+
     </application>
 
 </manifest>

@@ -17,13 +17,15 @@ public class ModePicker extends AppCompatActivity{
 
         RelativeLayout lay = findViewById(R.id.layout);
         AnimationDrawable anim = (AnimationDrawable) lay.getBackground();
-        anim.setEnterFadeDuration(2000);
+        anim.setEnterFadeDuration(4000);
         anim.setExitFadeDuration(4000);
         anim.start();
 
         Button bP = (Button)findViewById(R.id.practice);
         Button bV = (Button)findViewById(R.id.view);
         Button bA = (Button)findViewById(R.id.draw);
+        Button bS = (Button)findViewById(R.id.solo);
+
         //listener
         bV.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +47,12 @@ public class ModePicker extends AppCompatActivity{
                 startActivity(Mpract);
             }
         });
-
+        bS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent Msolo = new Intent(ModePicker.this, ModeSoloDraw.class);
+                startActivity(Msolo);
+            }
+        });
     }
 }
