@@ -13,25 +13,25 @@
         android:orientation="horizontal"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="50dp">
+        android:layout_height="40dp">
 
         <ImageButton
             android:id="@+id/new_btn"
-            android:layout_width="50dp"
+            android:layout_width="40dp"
             android:layout_height="fill_parent"
             android:layout_marginRight="5dp"
             android:background="@drawable/new_pic"
             android:contentDescription="@string/start_now" />
         <ImageButton
             android:id="@+id/draw_btn"
-            android:layout_width="50dp"
+            android:layout_width="40dp"
             android:layout_height="fill_parent"
             android:layout_marginRight="5dp"
             android:background="@drawable/brush2"
             android:contentDescription="@string/start_now" />
         <ImageButton
             android:id="@+id/erase_btn"
-            android:layout_width="50dp"
+            android:layout_width="40dp"
             android:background="@drawable/eraser"
             android:layout_marginRight="5dp"
             android:layout_height="fill_parent"
@@ -39,13 +39,13 @@
         <ImageButton
             android:id="@+id/save_btn"
             android:background="@drawable/save"
-            android:layout_width="50dp"
+            android:layout_width="40dp"
             android:layout_marginRight="5dp"
             android:layout_height="fill_parent"
             android:contentDescription="@string/start_now" />
         <Button
             android:id="@+id/b_prev"
-            android:layout_width="60dp"
+            android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentBottom="true"
             android:text="←" />
@@ -53,10 +53,20 @@
             android:id="@+id/b_next"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@+id/b_prev"
             android:layout_toRightOf="@+id/b_prev"
             android:text="→" />
+        <Button
+            android:id="@+id/redo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:text="R" />
+        <Button
+            android:id="@+id/undo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_toRightOf="@+id/b_prev"
+            android:text="U" />
     </LinearLayout>
 
     <RelativeLayout
@@ -176,5 +186,4 @@
             android:layout_height="30dp"/>
     </LinearLayout>
     </RelativeLayout>
-
 </LinearLayout>

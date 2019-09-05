@@ -6,11 +6,14 @@ import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageSwitcher;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+import android.widget.ViewSwitcher;
 
 import java.util.UUID;
 
@@ -22,8 +25,8 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
     private DrawingView drawView;
     private String currColor;
     public int pcolor =0xFF660000;
-
-    private Button next, prev;
+    
+    private Button next, prev, redobtn, undobtn;
     ImageSwitcher imageSwitcher;
     Integer[] images = {R.drawable.image_8,R.drawable.image_1, R.drawable.image_2, R.drawable.image_3,
             R.drawable.image_4, R.drawable.image_5, R.drawable.image_6, R.drawable.image_7,
@@ -48,6 +51,9 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
         next = (Button)findViewById(R.id.b_next);
         prev = (Button)findViewById(R.id.b_prev);
 
+        redobtn = (Button)findViewById(R.id.redo);
+        undobtn = (Button)findViewById(R.id.undo);
+
         LinearLayout paintLayout = (LinearLayout)findViewById(R.id.paint_colors);
         currpaint = (ImageButton)paintLayout.getChildAt(0);
 
@@ -61,6 +67,10 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
         increase.setOnClickListener(this);
         decrease.setOnClickListener(this);
 
+        //redo and undo buttons
+        redobtn.setOnClickListener(this);
+        undobtn.setOnClickListener(this);
+
         // launch color wheel
         ImageButton cwheel = (ImageButton)findViewById(R.id.cwheel_btn);
         cwheel.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +80,21 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        // image switcher
+        //setup image switcher
+        imageSwitcher = (ImageSwitcher) findViewById(R.id.imageSwitcher);
+
+        imageSwitcher.setFactory(new ViewSwitcher.ViewFactory(){
+            public View makeView(){
+                ImageView imageView = new ImageView(getApplicationContext());
+                imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+                imageView.setLayoutParams(
+                        new ImageSwitcher.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                                ViewGroup.LayoutParams.MATCH_PARENT));
+                return imageView;
+            }
+        });
+
+        // image switcher listener
         next.setOnClickListener(this);
         prev.setOnClickListener(this);
         prev.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +116,18 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
             }
         });
 
+        redobtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawView.onClickRedo();
+            }
+        });
+        undobtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawView.onClickUndo();
+            }
+        });
     }
 
     public void paintClicked(View view) {
