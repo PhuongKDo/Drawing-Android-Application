@@ -26,7 +26,7 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
     private String currColor;
     public int pcolor =0xFF660000;
 
-    private Button next, prev, redobtn, undobtn, flipbtn;
+    private Button next, prev, redobtn, undobtn, flipbtn, linebtn;
     ImageSwitcher imageSwitcher;
     Integer[] images = {R.drawable.image_8,R.drawable.image_1, R.drawable.image_2, R.drawable.image_3,
             R.drawable.image_4, R.drawable.image_5, R.drawable.image_6, R.drawable.image_7,
@@ -58,6 +58,8 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
 
         flipbtn = (Button)findViewById(R.id.flip);
 
+        linebtn = (Button)findViewById(R.id.flip);
+
         LinearLayout paintLayout = (LinearLayout)findViewById(R.id.paint_colors);
         currpaint = (ImageButton)paintLayout.getChildAt(0);
 
@@ -77,6 +79,9 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
 
         //flip view
         flipbtn.setOnClickListener(this);
+
+        //line
+        linebtn.setOnClickListener(this);
 
         // launch color wheel
         ImageButton cwheel = (ImageButton)findViewById(R.id.cwheel_btn);
@@ -104,6 +109,7 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
         // image switcher listener
         next.setOnClickListener(this);
         prev.setOnClickListener(this);
+
         prev.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -141,9 +147,11 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
             public void onClick(View v) {
                 if(flagflip == true) {
                     drawView.setScaleX(-1);
+                    imageSwitcher.setScaleX(-1);
                     flagflip = false;
                 } else {
                     drawView.setScaleX(1);
+                    imageSwitcher.setScaleX(1);
                     flagflip = true;
                 }
             }

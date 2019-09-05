@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient"
+    android:background="#FAF5EE"
     android:orientation="vertical"
     tools:context="com.example.fatla.mooncatcanvas.ModeSoloDraw">
 
@@ -72,6 +72,12 @@
             android:layout_height="40dp"
             android:layout_toRightOf="@+id/undo"
             android:text="F" />
+        <Button
+            android:id="@+id/line"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_toRightOf="@+id/undo"
+            android:text="L" />
     </LinearLayout>
 
     <RelativeLayout
@@ -80,9 +86,9 @@
 
         <ImageSwitcher
             android:id="@+id/imageSwitcher"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#fff"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#FAF5EE"
             android:layout_alignParentBottom="true"
             android:layout_marginTop="40dp" />
 
@@ -110,11 +116,11 @@
             android:layout_height="30dp"/>
         <ImageButton
             android:layout_margin="2dp"
-            android:background="#ffffcc"
+            android:background="#FAE900"
             android:contentDescription="@string/paint"
             android:onClick="paintClicked"
             android:src="@drawable/paint"
-            android:tag="#ffffcc"
+            android:tag="#FAE900"
             android:layout_width="30dp"
             android:layout_height="30dp"/>
         <ImageButton
