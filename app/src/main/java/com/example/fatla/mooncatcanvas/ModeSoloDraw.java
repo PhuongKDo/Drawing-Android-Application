@@ -25,13 +25,15 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
     private DrawingView drawView;
     private String currColor;
     public int pcolor =0xFF660000;
-    
-    private Button next, prev, redobtn, undobtn;
+
+    private Button next, prev, redobtn, undobtn, flipbtn;
     ImageSwitcher imageSwitcher;
     Integer[] images = {R.drawable.image_8,R.drawable.image_1, R.drawable.image_2, R.drawable.image_3,
             R.drawable.image_4, R.drawable.image_5, R.drawable.image_6, R.drawable.image_7,
             R.drawable.image_8, R.drawable.image_9};
     int i = 0;
+
+    private boolean flagflip = true;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,6 +56,8 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
         redobtn = (Button)findViewById(R.id.redo);
         undobtn = (Button)findViewById(R.id.undo);
 
+        flipbtn = (Button)findViewById(R.id.flip);
+
         LinearLayout paintLayout = (LinearLayout)findViewById(R.id.paint_colors);
         currpaint = (ImageButton)paintLayout.getChildAt(0);
 
@@ -70,6 +74,9 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
         //redo and undo buttons
         redobtn.setOnClickListener(this);
         undobtn.setOnClickListener(this);
+
+        //flip view
+        flipbtn.setOnClickListener(this);
 
         // launch color wheel
         ImageButton cwheel = (ImageButton)findViewById(R.id.cwheel_btn);
@@ -126,6 +133,19 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 drawView.onClickUndo();
+            }
+        });
+
+        flipbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(flagflip == true) {
+                    drawView.setScaleX(-1);
+                    flagflip = false;
+                } else {
+                    drawView.setScaleX(1);
+                    flagflip = true;
+                }
             }
         });
     }

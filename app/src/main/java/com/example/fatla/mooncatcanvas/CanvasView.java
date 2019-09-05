@@ -79,8 +79,9 @@ public class CanvasView extends View implements View.OnTouchListener {
         mPaint = new Paint();
         mPaints.add(mPaint);
         mPaint.setColor(mPenColor);
-        if(!fill)
+        if(!fill) {
             mPaint.setStyle(Paint.Style.STROKE);
+        }
         mPaint.setStrokeWidth(mDotSize);
 
         //mPaint.setDither(true);
@@ -168,8 +169,9 @@ public class CanvasView extends View implements View.OnTouchListener {
 
     protected void onDraw(Canvas canvas){
         super.onDraw(canvas);
-        for (int i = 0; i < mPaths.size(); ++i)
+        for (int i = 0; i < mPaths.size(); ++i) {
             canvas.drawPath(mPaths.get(i), mPaints.get(i));
+        }
         // canvas.drawPath(mPath, mPaint);
 
     }

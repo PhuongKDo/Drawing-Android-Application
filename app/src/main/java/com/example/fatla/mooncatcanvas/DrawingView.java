@@ -36,6 +36,7 @@ public class DrawingView extends View {
     }
     public void startNew() {
         drawCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
+        setupDrawing();
         invalidate();
     }
     public void setErase(boolean isErase) {
