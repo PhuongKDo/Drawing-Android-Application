@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -21,6 +22,7 @@ import yuku.ambilwarna.AmbilWarnaDialog;
 
 public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListener {
 
+    private static  final String TAG = ModeSoloDraw.class.getSimpleName();
     private ImageButton currpaint, drawbtn, baru, erase, save, cwheel, increase, decrease, imgView;
     private DrawingView drawView;
     private String currColor;
@@ -242,8 +244,8 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onOk(AmbilWarnaDialog dialog, int color) {
-                pcolor = color;
-                drawView.changeColor(color);
+                String pcolor = "#" + String.format("%06X", (0xFFFFFF & color));
+                drawView.setColor(pcolor);
             }
         });
         colorPicker.show();

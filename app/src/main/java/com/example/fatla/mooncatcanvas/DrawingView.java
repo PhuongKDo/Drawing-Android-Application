@@ -136,11 +136,9 @@ public class DrawingView extends View {
         drawPaint.setStrokeWidth(currentBrushSize--);
     }
     public int getPaintColor() {
-      return paintColor;
-    };
-    public void changeColor (int cwheel_color) {
-        drawPaint.setColor(cwheel_color);
+        return paintColor;
     }
+
     public void setColor(String newColor) {
         invalidate();
         paintColor = Color.parseColor(newColor);

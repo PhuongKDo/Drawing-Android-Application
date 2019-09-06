@@ -89,16 +89,15 @@
         <ImageSwitcher
             android:id="@+id/imageSwitcher"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:background="#FAF5EE"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="40dp" />
+            android:layout_marginTop="40dp">
+        </ImageSwitcher>
 
         <com.example.fatla.mooncatcanvas.DrawingView
             android:id="@+id/drawing"
-            android:layout_weight="1"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"/>
+            android:layout_height="fill_parent" />
 
     <LinearLayout
         android:id="@+id/paint_colors"
@@ -197,10 +196,10 @@
             android:id="@+id/cwheel_btn"
             android:layout_margin="2dp"
             android:src="@drawable/paint"
-
             android:background="@drawable/colorwheel2"
             android:layout_width="30dp"
             android:layout_height="30dp"/>
     </LinearLayout>
     </RelativeLayout>
+
 </LinearLayout>
