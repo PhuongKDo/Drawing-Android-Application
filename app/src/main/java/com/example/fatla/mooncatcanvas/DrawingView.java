@@ -32,6 +32,7 @@ public class DrawingView extends View {
     private ArrayList<Paint> mPaints;
 
     public boolean flagline = false;
+    public boolean flagbucket = false;
 
     public DrawingView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -85,7 +86,11 @@ public class DrawingView extends View {
         drawPaint.setColor(paintColor);
         drawPaint.setAntiAlias(true);
         drawPaint.setStrokeWidth(currentBrushSize);
-        drawPaint.setStyle(Paint.Style.STROKE);
+        if (flagbucket == true) {
+            drawPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+        } else {
+            drawPaint.setStyle(Paint.Style.STROKE);
+        }
         drawPaint.setStrokeJoin(Paint.Join.ROUND);
         drawPaint.setStrokeCap(Paint.Cap.ROUND);
         drawPaint.setPathEffect(new CornerPathEffect(10) );
@@ -111,6 +116,10 @@ public class DrawingView extends View {
 
     public void drawLine(boolean flag) {
         flagline = flag;
+    }
+
+    public void bucket(boolean flag) {
+        flagbucket = flag;
     }
 
     @Override
@@ -142,13 +151,11 @@ public class DrawingView extends View {
         return true;
     }
 
-    public void increaseBrushSize() {
-        drawPaint.setStrokeWidth(currentBrushSize++);
+    public void changeBrushSize(int size) {
+        currentBrushSize = size;
+        drawPaint.setStrokeWidth(currentBrushSize);
     }
 
-    public void decreaseBrushSize() {
-        drawPaint.setStrokeWidth(currentBrushSize--);
-    }
     public int getPaintColor() {
         return paintColor;
     }

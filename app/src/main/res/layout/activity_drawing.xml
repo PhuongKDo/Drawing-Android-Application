@@ -193,13 +193,6 @@
             android:layout_width="30dp"
             android:layout_height="30dp"/>
         <ImageButton
-            android:id="@+id/decrease_btn"
-            android:layout_margin="2dp"
-            android:src="@drawable/paint"
-            android:background="@drawable/minus"
-            android:layout_width="30dp"
-            android:layout_height="30dp"/>
-        <ImageButton
             android:id="@+id/cwheel_btn"
             android:layout_margin="2dp"
             android:src="@drawable/paint"

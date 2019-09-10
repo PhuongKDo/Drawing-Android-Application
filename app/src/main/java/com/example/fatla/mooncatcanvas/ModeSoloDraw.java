@@ -1,6 +1,10 @@
 package com.example.fatla.mooncatcanvas;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
@@ -13,6 +17,8 @@ import android.widget.ImageButton;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
@@ -28,15 +34,17 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
     private String currColor = "#000000";
     public int pcolor =0xFF660000;
 
-    private Button next, prev, redobtn, undobtn, flipbtn, linebtn;
+    private Button next, prev, redobtn, undobtn, flipbtn, linebtn, bucketbtn;
     ImageSwitcher imageSwitcher;
     Integer[] images = {R.drawable.image_8,R.drawable.image_1, R.drawable.image_2, R.drawable.image_3,
             R.drawable.image_4, R.drawable.image_5, R.drawable.image_6, R.drawable.image_7,
             R.drawable.image_8, R.drawable.image_9};
     int i = 0;
-
+    int size = 10;
     private boolean flagflip = true;
     private boolean flagline = false;
+    private boolean flagbucket = false;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +58,6 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
 
         cwheel = (ImageButton)findViewById(R.id.cwheel_btn);
         increase = (ImageButton)findViewById(R.id.increase_btn);
-        decrease = (ImageButton)findViewById(R.id.decrease_btn);
 
         next = (Button)findViewById(R.id.b_next);
         prev = (Button)findViewById(R.id.b_prev);
@@ -61,6 +68,8 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
         flipbtn = (Button)findViewById(R.id.flip);
 
         linebtn = (Button)findViewById(R.id.line);
+
+        bucketbtn = (Button)findViewById(R.id.bucket);
 
         LinearLayout paintLayout = (LinearLayout)findViewById(R.id.paint_colors);
         currpaint = (ImageButton)paintLayout.getChildAt(0);
@@ -73,7 +82,6 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
 
         // increase decrease brush size
         increase.setOnClickListener(this);
-        decrease.setOnClickListener(this);
 
         //redo and undo buttons
         redobtn.setOnClickListener(this);
@@ -84,6 +92,9 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
 
         //line
         linebtn.setOnClickListener(this);
+
+        //bucket
+        bucketbtn.setOnClickListener(this);
 
         // launch color wheel
         ImageButton cwheel = (ImageButton)findViewById(R.id.cwheel_btn);
@@ -172,7 +183,19 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
                 }
             }
         });
-    }
+
+        bucketbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                if (flagbucket == false) {
+//                    drawView.bucket(true);
+//                    flagbucket = true;
+//                } else {
+//                    drawView.bucket(false);
+//                    flagbucket = false;
+//                }
+            }
+        });    }
 
     public void paintClicked(View view) {
         if (view != currpaint) {
@@ -185,13 +208,57 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
             currpaint = (ImageButton)view;
         }
     }
+
+
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.increase_btn) {
-            drawView.increaseBrushSize();
-        }
-        if (view.getId() == R.id.decrease_btn) {
-            drawView.decreaseBrushSize();
+            final AlertDialog.Builder alertDialog= new AlertDialog.Builder(this);
+
+            alertDialog.setTitle("Brush Size");
+
+            final SeekBar seek = new SeekBar(this);
+            seek.setMax(255);
+            seek.setKeyProgressIncrement(1);
+
+            alertDialog.setTitle("Please select your brush size. ");
+            alertDialog.setView(seek);
+            seek.setProgress(size);
+            alertDialog.setMessage("Current brush size: " + size);
+
+            seek.getProgressDrawable().setColorFilter(new PorterDuffColorFilter(Color.RED, PorterDuff.Mode.MULTIPLY));
+
+            final AlertDialog dialog = alertDialog.create();
+            seek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    size = progress;
+                    dialog.setMessage("Current brush size: " + size);
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+                    drawView.changeBrushSize(size);
+                }
+            });
+
+            dialog.setButton(dialog.BUTTON_POSITIVE, "OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+            dialog.setButton(dialog.BUTTON_NEGATIVE, "Cancel",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+            dialog.show();
         }
         if (view.getId() == R.id.draw_btn) {
             drawView.setColor(currColor);
