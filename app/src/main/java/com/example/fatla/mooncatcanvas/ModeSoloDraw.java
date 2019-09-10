@@ -25,7 +25,7 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
     private static  final String TAG = ModeSoloDraw.class.getSimpleName();
     private ImageButton currpaint, drawbtn, baru, erase, save, cwheel, increase, decrease, imgView;
     private DrawingView drawView;
-    private String currColor;
+    private String currColor = "#000000";
     public int pcolor =0xFF660000;
 
     private Button next, prev, redobtn, undobtn, flipbtn, linebtn;
@@ -195,7 +195,6 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
         }
         if (view.getId() == R.id.draw_btn) {
             drawView.setColor(currColor);
-            drawView.setupDrawing();
         }
         if (view.getId() == R.id.erase_btn) {
             drawView.setColor("#ffffff");
@@ -259,6 +258,7 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onOk(AmbilWarnaDialog dialog, int color) {
                 String pcolor = "#" + String.format("%06X", (0xFFFFFF & color));
+                currColor = pcolor;
                 drawView.setColor(pcolor);
             }
         });
