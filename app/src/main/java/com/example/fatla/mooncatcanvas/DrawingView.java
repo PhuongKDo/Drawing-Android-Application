@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.CornerPathEffect;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PorterDuff;
@@ -29,6 +30,8 @@ public class DrawingView extends View {
     private ArrayList<Path> mPaths;
     private ArrayList<Path> undonePaths = new ArrayList<Path>();
     private ArrayList<Paint> mPaints;
+
+    public boolean flagline = false;
 
     public DrawingView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -85,6 +88,8 @@ public class DrawingView extends View {
         drawPaint.setStyle(Paint.Style.STROKE);
         drawPaint.setStrokeJoin(Paint.Join.ROUND);
         drawPaint.setStrokeCap(Paint.Cap.ROUND);
+        drawPaint.setPathEffect(new CornerPathEffect(10) );
+
         canvasPaint = new Paint(Paint.DITHER_FLAG);
     }
 
@@ -104,6 +109,10 @@ public class DrawingView extends View {
         else{}
     }
 
+    public void drawLine(boolean flag) {
+        flagline = flag;
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         float touchX = event.getX();
@@ -114,9 +123,14 @@ public class DrawingView extends View {
                 drawPath.moveTo(touchX, touchY);
                 break;
             case MotionEvent.ACTION_MOVE:
-                drawPath.lineTo(touchX, touchY);
+                if (flagline == false) {
+                    drawPath.lineTo(touchX, touchY);
+                }
                 break;
             case MotionEvent.ACTION_UP:
+                if (flagline == true) {
+                    drawPath.lineTo(touchX, touchY);
+                }
                 this.addPath(true);
                 drawCanvas.drawPath(drawPath, drawPaint);
                 drawPath.reset();
@@ -154,11 +168,12 @@ public class DrawingView extends View {
         drawPath = new Path();
 
         drawPaint.setColor(paintColor);
-        drawPaint.setAntiAlias(true);
         drawPaint.setStrokeWidth(currentBrushSize);
+        drawPaint.setAntiAlias(true);
         drawPaint.setStyle(Paint.Style.STROKE);
         drawPaint.setStrokeJoin(Paint.Join.ROUND);
-        drawPaint.setStrokeCap(Paint.Cap.ROUND);
+
+        drawPaint.setPathEffect(new CornerPathEffect(10) );
         canvasPaint = new Paint(Paint.DITHER_FLAG);
 
         brushSize = 10;

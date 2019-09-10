@@ -36,7 +36,7 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
     int i = 0;
 
     private boolean flagflip = true;
-
+    private boolean flagline = false;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +60,7 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
 
         flipbtn = (Button)findViewById(R.id.flip);
 
-        linebtn = (Button)findViewById(R.id.flip);
+        linebtn = (Button)findViewById(R.id.line);
 
         LinearLayout paintLayout = (LinearLayout)findViewById(R.id.paint_colors);
         currpaint = (ImageButton)paintLayout.getChildAt(0);
@@ -147,6 +147,7 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
         flipbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if(flagflip == true) {
                     drawView.setScaleX(-1);
                     imageSwitcher.setScaleX(-1);
@@ -155,6 +156,19 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
                     drawView.setScaleX(1);
                     imageSwitcher.setScaleX(1);
                     flagflip = true;
+                }
+            }
+        });
+
+        linebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (flagline == false) {
+                    drawView.drawLine(true);
+                    flagline = true;
+                } else {
+                    drawView.drawLine(false);
+                    flagline = false;
                 }
             }
         });
