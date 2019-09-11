@@ -46,7 +46,6 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
     int newsize = 10;
     private boolean flagflip = true;
     private boolean flagline = false;
-    private boolean flagbucket = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -188,19 +187,7 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
                 }
             }
         });
-
-        bucketbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                if (flagbucket == false) {
-//                    drawView.bucket(true);
-//                    flagbucket = true;
-//                } else {
-//                    drawView.bucket(false);
-//                    flagbucket = false;
-//                }
-            }
-        });    }
+    }
 
     public void paintClicked(View view) {
         if (view != currpaint) {

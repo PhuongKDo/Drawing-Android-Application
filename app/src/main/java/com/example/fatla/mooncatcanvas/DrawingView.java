@@ -33,8 +33,6 @@ public class DrawingView extends View {
 
     public boolean flagline = false;
 
-    private float touchX, touchY;
-
     public DrawingView(Context context, AttributeSet attrs) {
         super(context, attrs);
         setupDrawing();
@@ -117,10 +115,11 @@ public class DrawingView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        touchX = event.getX();
-        touchY = event.getY();
+        float touchX = event.getX();
+        float touchY = event.getY();
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
+                this.addPath(true);
                 drawPath.moveTo(touchX, touchY);
                 break;
             case MotionEvent.ACTION_MOVE:
@@ -129,10 +128,10 @@ public class DrawingView extends View {
                 }
                 break;
             case MotionEvent.ACTION_UP:
-                this.addPath(true);
                 if (flagline == true) {
                     drawPath.lineTo(touchX, touchY);
                 }
+                this.addPath(true);
                 drawCanvas.drawPath(drawPath, drawPaint);
                 drawPath.reset();
                 break;
@@ -140,8 +139,6 @@ public class DrawingView extends View {
                 return false;
         }
         invalidate();
-        touchX = event.getX();
-        touchY = event.getY();
         return true;
     }
 
