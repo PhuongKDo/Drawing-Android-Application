@@ -22,6 +22,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
+import com.github.chrisbanes.photoview.PhotoView;
+
 import java.util.UUID;
 
 import yuku.ambilwarna.AmbilWarnaDialog;
@@ -41,6 +43,7 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
             R.drawable.image_8, R.drawable.image_9};
     int i = 0;
     int size = 10;
+    int newsize = 10;
     private boolean flagflip = true;
     private boolean flagline = false;
     private boolean flagbucket = false;
@@ -55,6 +58,8 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
         baru = (ImageButton)findViewById(R.id.new_btn);
         erase = (ImageButton)findViewById(R.id.erase_btn);
         save = (ImageButton)findViewById(R.id.save_btn);
+
+        PhotoView photoView = (PhotoView) findViewById(R.id.photoViewV);
 
         cwheel = (ImageButton)findViewById(R.id.cwheel_btn);
         increase = (ImageButton)findViewById(R.id.increase_btn);
@@ -111,7 +116,7 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
         imageSwitcher.setFactory(new ViewSwitcher.ViewFactory(){
             public View makeView(){
                 ImageView imageView = new ImageView(getApplicationContext());
-                imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+                imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
                 imageView.setLayoutParams(
                         new ImageSwitcher.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                                 ViewGroup.LayoutParams.MATCH_PARENT));
@@ -232,8 +237,8 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
             seek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    size = progress;
-                    dialog.setMessage("Current brush size: " + size);
+                    newsize = progress;
+                    dialog.setMessage("Current brush size: " + progress);
                 }
 
                 @Override
@@ -242,13 +247,14 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
 
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
-                    drawView.changeBrushSize(size);
                 }
             });
 
             dialog.setButton(dialog.BUTTON_POSITIVE, "OK",
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
+                            size = newsize;
+                            drawView.changeBrushSize(size);
                             dialog.dismiss();
                         }
                     });

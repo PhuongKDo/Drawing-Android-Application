@@ -32,7 +32,8 @@ public class DrawingView extends View {
     private ArrayList<Paint> mPaints;
 
     public boolean flagline = false;
-    public boolean flagbucket = false;
+
+    private float touchX, touchY;
 
     public DrawingView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -86,16 +87,9 @@ public class DrawingView extends View {
         drawPaint.setColor(paintColor);
         drawPaint.setAntiAlias(true);
         drawPaint.setStrokeWidth(currentBrushSize);
-        if (flagbucket == true) {
-            drawPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-        } else {
-            drawPaint.setStyle(Paint.Style.STROKE);
-        }
+        drawPaint.setStyle(Paint.Style.STROKE);
         drawPaint.setStrokeJoin(Paint.Join.ROUND);
         drawPaint.setStrokeCap(Paint.Cap.ROUND);
-        drawPaint.setPathEffect(new CornerPathEffect(10) );
-
-        canvasPaint = new Paint(Paint.DITHER_FLAG);
     }
 
     public void onClickUndo() {
@@ -119,16 +113,14 @@ public class DrawingView extends View {
     }
 
     public void bucket(boolean flag) {
-        flagbucket = flag;
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        float touchX = event.getX();
-        float touchY = event.getY();
+        touchX = event.getX();
+        touchY = event.getY();
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
-                this.addPath(true);
                 drawPath.moveTo(touchX, touchY);
                 break;
             case MotionEvent.ACTION_MOVE:
@@ -137,10 +129,10 @@ public class DrawingView extends View {
                 }
                 break;
             case MotionEvent.ACTION_UP:
+                this.addPath(true);
                 if (flagline == true) {
                     drawPath.lineTo(touchX, touchY);
                 }
-                this.addPath(true);
                 drawCanvas.drawPath(drawPath, drawPaint);
                 drawPath.reset();
                 break;
@@ -148,12 +140,13 @@ public class DrawingView extends View {
                 return false;
         }
         invalidate();
+        touchX = event.getX();
+        touchY = event.getY();
         return true;
     }
 
     public void changeBrushSize(int size) {
         currentBrushSize = size;
-        drawPaint.setStrokeWidth(currentBrushSize);
     }
 
     public int getPaintColor() {

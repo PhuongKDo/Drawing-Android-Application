@@ -44,19 +44,6 @@
             android:layout_height="30dp"
             android:contentDescription="@string/start_now" />
         <Button
-
-            android:id="@+id/b_prev"
-            android:layout_width="40dp"
-            android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            android:text="←" />
-        <Button
-            android:id="@+id/b_next"
-            android:layout_width="40dp"
-            android:layout_height="50dp"
-            android:layout_toRightOf="@+id/b_prev"
-            android:text="→" />
-        <Button
             android:id="@+id/redo"
             android:layout_width="40dp"
             android:layout_height="40dp"
@@ -88,23 +75,6 @@
             android:layout_toRightOf="@+id/undo"
             android:text="B" />
     </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageSwitcher
-            android:id="@+id/imageSwitcher"
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:background="#FAF5EE"
-            android:layout_marginTop="40dp">
-        </ImageSwitcher>
-
-        <com.example.fatla.mooncatcanvas.DrawingView
-            android:id="@+id/drawing"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" />
 
     <LinearLayout
         android:id="@+id/paint_colors"
@@ -200,6 +170,46 @@
             android:layout_width="30dp"
             android:layout_height="30dp"/>
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageSwitcher
+            android:id="@+id/imageSwitcher"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:background="#FAF5EE">
+        </ImageSwitcher>
+        <com.example.fatla.mooncatcanvas.DrawingView
+            android:id="@+id/drawing"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="#FAF5EE"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/b_prev"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="#FAF5EE"
+                android:textSize="20dp"
+                android:text="←" />
+            <Button
+                android:id="@+id/b_next"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:textSize="20dp"
+                android:background="#FAF5EE"
+                android:layout_marginLeft="200dp"
+                android:layout_toRightOf="@+id/b_prev"
+                android:text="→" />
+        </LinearLayout>
     </RelativeLayout>
 
 </LinearLayout>
