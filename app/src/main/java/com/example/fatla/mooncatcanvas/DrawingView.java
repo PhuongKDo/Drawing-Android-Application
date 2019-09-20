@@ -73,6 +73,7 @@ public class DrawingView extends View {
 
         for (int i = 0; i < mPaths.size(); ++i)
             canvas.drawPath(mPaths.get(i), mPaints.get(i));
+
     }
     private void addPath(boolean fill)
     {
@@ -91,6 +92,16 @@ public class DrawingView extends View {
     }
 
     public void onClickUndo() {
+        if (mPaths.size() > 0) {
+        undonePaths.add(mPaths.remove(mPaths.size() - 1));
+        invalidate();
+        }
+        else{}
+        if (mPaths.size() > 0) {
+            undonePaths.add(mPaths.remove(mPaths.size() - 1));
+            invalidate();
+        }
+        else{}
         if (mPaths.size() > 0) {
             undonePaths.add(mPaths.remove(mPaths.size() - 1));
             invalidate();
@@ -117,6 +128,7 @@ public class DrawingView extends View {
     public boolean onTouchEvent(MotionEvent event) {
         float touchX = event.getX();
         float touchY = event.getY();
+        changeBrushSize(currentBrushSize);
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
                 this.addPath(true);

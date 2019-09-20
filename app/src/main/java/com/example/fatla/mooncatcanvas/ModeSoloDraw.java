@@ -31,12 +31,13 @@ import yuku.ambilwarna.AmbilWarnaDialog;
 public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListener {
 
     private static  final String TAG = ModeSoloDraw.class.getSimpleName();
-    private ImageButton currpaint, drawbtn, baru, erase, save, cwheel, increase, decrease, imgView;
+    private ImageButton currpaint, drawbtn, baru, erase, save, imgView,cwheel, redobtn, undobtn, flipbtn, linebtn, bucketbtn, increase;
     private DrawingView drawView;
     private String currColor = "#000000";
     public int pcolor =0xFF660000;
 
-    private Button next, prev, redobtn, undobtn, flipbtn, linebtn, bucketbtn;
+    private Button next, prev;
+//    , redobtn, undobtn, flipbtn, linebtn, bucketbtn, increase
     ImageSwitcher imageSwitcher;
     Integer[] images = {R.drawable.image_8,R.drawable.image_1, R.drawable.image_2, R.drawable.image_3,
             R.drawable.image_4, R.drawable.image_5, R.drawable.image_6, R.drawable.image_7,
@@ -66,14 +67,14 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
         next = (Button)findViewById(R.id.b_next);
         prev = (Button)findViewById(R.id.b_prev);
 
-        redobtn = (Button)findViewById(R.id.redo);
-        undobtn = (Button)findViewById(R.id.undo);
+        redobtn = (ImageButton)findViewById(R.id.redo);
+        undobtn = (ImageButton)findViewById(R.id.undo);
 
-        flipbtn = (Button)findViewById(R.id.flip);
+        flipbtn = (ImageButton)findViewById(R.id.flip);
 
-        linebtn = (Button)findViewById(R.id.line);
+        linebtn = (ImageButton)findViewById(R.id.line);
 
-        bucketbtn = (Button)findViewById(R.id.bucket);
+        bucketbtn = (ImageButton)findViewById(R.id.bucket);
 
         LinearLayout paintLayout = (LinearLayout)findViewById(R.id.paint_colors);
         currpaint = (ImageButton)paintLayout.getChildAt(0);
@@ -127,9 +128,11 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
         next.setOnClickListener(this);
         prev.setOnClickListener(this);
 
+        // switch image
         prev.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if (i>0){
                     i--;
                     imageSwitcher.setImageResource(images[i]);
@@ -201,7 +204,6 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.increase_btn) {
@@ -255,9 +257,11 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
         }
         if (view.getId() == R.id.draw_btn) {
             drawView.setColor(currColor);
+            drawView.drawLine(false);
+            flagline = false;
         }
         if (view.getId() == R.id.erase_btn) {
-            drawView.setColor("#ffffff");
+            drawView.setColor("#FAF5EE");
         }
         if (view.getId() == R.id.new_btn) {
             AlertDialog.Builder newDialog = new AlertDialog.Builder(this);
@@ -306,8 +310,8 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
             saveDialog.show();
         }
     }
-    //open color picker
 
+    //open color picker
     public void openColorPicker(){
         pcolor = drawView.getPaintColor();
         AmbilWarnaDialog colorPicker = new AmbilWarnaDialog(this, pcolor, new AmbilWarnaDialog.OnAmbilWarnaListener() {
@@ -323,7 +327,5 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
             }
         });
         colorPicker.show();
-        Toast toast = Toast.makeText(getApplicationContext(), "Picking Colorwheel!", Toast.LENGTH_SHORT);
-        toast.show();
     }
 }

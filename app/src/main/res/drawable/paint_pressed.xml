@@ -22,5 +22,4 @@
             <corners android:radius="10dp"/>
         </shape>
     </item>
-
 </layer-list>

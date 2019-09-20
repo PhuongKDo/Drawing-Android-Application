@@ -13,162 +13,160 @@
         android:orientation="horizontal"
         android:layout_gravity="center"
         android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:layout_width="wrap_content"
-        android:layout_height="30dp">
+        android:layout_height="40dp">
 
         <ImageButton
             android:id="@+id/new_btn"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginRight="5dp"
-            android:background="@drawable/new_pic"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/border"
+            android:src="@drawable/ic_new_documen"
             android:contentDescription="@string/start_now" />
         <ImageButton
             android:id="@+id/draw_btn"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginRight="5dp"
-            android:background="@drawable/brush2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/border"
+            android:src="@drawable/ic_paintbrush"
             android:contentDescription="@string/start_now" />
         <ImageButton
             android:id="@+id/erase_btn"
-            android:layout_width="30dp"
-            android:background="@drawable/eraser"
-            android:layout_marginRight="5dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/border"
+            android:src="@drawable/ic_eraser"
             android:contentDescription="@string/start_now" />
         <ImageButton
-            android:id="@+id/save_btn"
-            android:background="@drawable/save"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:contentDescription="@string/start_now" />
-        <Button
-            android:id="@+id/redo"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:text="R" />
-        <Button
-            android:id="@+id/undo"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_toRightOf="@+id/b_prev"
-            android:text="U" />
-        <Button
             android:id="@+id/flip"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_toRightOf="@+id/undo"
+            android:background="@drawable/border"
+            android:src="@drawable/ic_flip"
             android:text="F" />
-        <Button
+        <ImageButton
             android:id="@+id/line"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/paint"
-            android:layout_toRightOf="@+id/undo"
+            android:background="@drawable/border"
+            android:src="@drawable/ic_minus_symbol"
             android:text="L" />
-        <Button
+        <ImageButton
+            android:id="@+id/increase_btn"
+            android:text="S"
+            android:background="@drawable/border"
+            android:src="@drawable/ic_increase_size_option"
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
+        <ImageButton
+            android:id="@+id/redo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/border"
+            android:text="R" />
+        <ImageButton
+            android:id="@+id/undo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/border"
+            android:layout_toRightOf="@+id/b_prev"
+            android:text="U" />
+        <ImageButton
             android:id="@+id/bucket"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/paint"
+            android:background="@drawable/border"
             android:layout_toRightOf="@+id/undo"
             android:text="B" />
+        <ImageButton
+            android:id="@+id/save_btn"
+            android:background="@drawable/border"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="@string/start_now" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/paint_colors"
         android:layout_gravity="center"
         android:orientation="horizontal"
+        android:background="#D5D6D8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-
         <ImageButton
-            android:layout_margin="2dp"
             android:background="#ff6600"
             android:contentDescription="@string/paint"
             android:onClick="paintClicked"
             android:src="@drawable/paint"
             android:tag="#ff6600"
-            android:layout_width="30dp"
-            android:layout_height="30dp"/>
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
         <ImageButton
-            android:layout_margin="2dp"
             android:background="#FAE900"
             android:contentDescription="@string/paint"
             android:onClick="paintClicked"
             android:src="@drawable/paint"
             android:tag="#FAE900"
-            android:layout_width="30dp"
-            android:layout_height="30dp"/>
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
         <ImageButton
-            android:layout_margin="2dp"
             android:background="#ff0099"
             android:contentDescription="@string/paint"
             android:onClick="paintClicked"
             android:src="@drawable/paint"
-            android:layout_width="30dp"
+            android:layout_width="40dp"
             android:tag="#ff0099"
-            android:layout_height="30dp"/>
+            android:layout_height="40dp"/>
         <ImageButton
-            android:layout_margin="2dp"
             android:background="#A770EF"
             android:contentDescription="@string/paint"
             android:onClick="paintClicked"
             android:src="@drawable/paint"
-            android:layout_width="30dp"
+            android:layout_width="40dp"
             android:tag="#A770EF"
-            android:layout_height="30dp"/>
+            android:layout_height="40dp"/>
         <ImageButton
-            android:layout_margin="2dp"
             android:background="#ff7878"
             android:contentDescription="@string/paint"
             android:onClick="paintClicked"
             android:src="@drawable/paint"
-            android:layout_width="30dp"
+            android:layout_width="40dp"
             android:tag="#ff7878"
-            android:layout_height="30dp"/>
+            android:layout_height="40dp"/>
         <ImageButton
-            android:layout_margin="2dp"
             android:background="#43C6AC"
             android:contentDescription="@string/paint"
             android:onClick="paintClicked"
             android:src="@drawable/paint"
-            android:layout_width="30dp"
+            android:layout_width="40dp"
             android:tag="#43C6AC"
-            android:layout_height="30dp"/>
+            android:layout_height="40dp"/>
         <ImageButton
-            android:layout_margin="2dp"
             android:background="#1cefff"
             android:contentDescription="@string/paint"
             android:onClick="paintClicked"
             android:src="@drawable/paint"
-            android:layout_width="30dp"
+            android:layout_width="40dp"
             android:tag="#1cefff"
-            android:layout_height="30dp"/>
+            android:layout_height="40dp"/>
         <ImageButton
-            android:layout_margin="2dp"
             android:background="#e73827"
             android:contentDescription="@string/paint"
             android:onClick="paintClicked"
             android:src="@drawable/paint"
-            android:layout_width="30dp"
+            android:layout_width="40dp"
             android:tag="#e73827"
-            android:layout_height="30dp"/>
-        <ImageButton
-            android:id="@+id/increase_btn"
-            android:layout_margin="2dp"
-            android:src="@drawable/paint"
-            android:background="@drawable/plus"
-            android:layout_width="30dp"
-            android:layout_height="30dp"/>
+            android:layout_height="40dp"/>
         <ImageButton
             android:id="@+id/cwheel_btn"
-            android:layout_margin="2dp"
+            android:background="@drawable/gradient4"
+            android:contentDescription="@string/paint"
+            android:onClick="paintClicked"
             android:src="@drawable/paint"
-            android:background="@drawable/colorwheel2"
-            android:layout_width="30dp"
-            android:layout_height="30dp"/>
+            android:layout_width="40dp"
+            android:tag="#e73827"
+            android:layout_height="40dp"/>
     </LinearLayout>
 
     <RelativeLayout
@@ -203,6 +201,28 @@
                 android:background="#FAF5EE"
                 android:textSize="20dp"
                 android:text="←" />
+<!--            <com.getbase.floatingactionbutton.FloatingActionsMenu-->
+<!--                android:id="@+id/fab_menu"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="200dp"-->
+<!--                android:layout_gravity="right|bottom"-->
+<!--                >-->
+
+<!--                <com.getbase.floatingactionbutton.FloatingActionButton-->
+<!--                    android:id="@+id/locate_store"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    />-->
+<!--                <com.getbase.floatingactionbutton.FloatingActionButton-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    />-->
+<!--                <com.getbase.floatingactionbutton.FloatingActionButton-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    />-->
+<!--            </com.getbase.floatingactionbutton.FloatingActionsMenu>-->
             <Button
                 android:id="@+id/b_next"
                 android:layout_width="100dp"
@@ -213,6 +233,7 @@
                 android:layout_toRightOf="@+id/b_prev"
                 android:text="→" />
         </LinearLayout>
+
     </RelativeLayout>
 
 </LinearLayout>
