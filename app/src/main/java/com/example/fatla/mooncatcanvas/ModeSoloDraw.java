@@ -1,18 +1,27 @@
 package com.example.fatla.mooncatcanvas;
 
 import android.app.Dialog;
+import android.content.ContentResolver;
+import android.content.ContentUris;
+import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
@@ -24,7 +33,18 @@ import android.widget.ViewSwitcher;
 
 import com.github.chrisbanes.photoview.PhotoView;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.UUID;
+
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import android.net.Uri;
+import android.provider.MediaStore;
+import android.provider.MediaStore.Images;
+
+import org.w3c.dom.Text;
 
 import yuku.ambilwarna.AmbilWarnaDialog;
 
@@ -33,6 +53,7 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
     private static  final String TAG = ModeSoloDraw.class.getSimpleName();
     private ImageButton currpaint, drawbtn, baru, erase, save, imgView,cwheel, redobtn, undobtn, flipbtn, linebtn, bucketbtn, increase;
     private DrawingView drawView;
+    private TextView textView;
     private String currColor = "#000000";
     public int pcolor =0xFF660000;
 
@@ -218,6 +239,7 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
             alertDialog.setTitle("Please select your brush size. ");
             alertDialog.setView(seek);
             seek.setProgress(size);
+
             alertDialog.setMessage("Current brush size: " + size);
 
             seek.getProgressDrawable().setColorFilter(new PorterDuffColorFilter(Color.RED, PorterDuff.Mode.MULTIPLY));
@@ -238,6 +260,9 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
                 public void onStopTrackingTouch(SeekBar seekBar) {
                 }
             });
+
+//            LayoutInflater inflater = this.getLayoutInflater();
+//            dialog.setView(inflater.inflate(R.layout.brushsize_dialog, null));
 
             dialog.setButton(dialog.BUTTON_POSITIVE, "OK",
                     new DialogInterface.OnClickListener() {
@@ -289,16 +314,17 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
             saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    drawView.setDrawingCacheEnabled(true);
-                    String imgSaved = MediaStore.Images.Media.insertImage(getContentResolver(), drawView.getDrawingCache(), UUID.randomUUID().toString()+".png", "drawing");
-                    if (imgSaved != null) {
-                        Toast savedtoast = Toast.makeText(getApplicationContext(), "Drawing saved to Gallery", Toast.LENGTH_SHORT);
-                        savedtoast.show();
-                    } else {
-                        Toast unsaved = Toast.makeText(getApplicationContext(),"Image could not saved", Toast.LENGTH_SHORT);
-                        unsaved.show();
-                    }
-                    drawView.destroyDrawingCache();
+                    drawView.saveDrawing2();
+//                    drawView.setDrawingCacheEnabled(true);
+//                    String imgSaved = MediaStore.Images.Media.insertImage(getContentResolver(), drawView.getDrawingCache(), UUID.randomUUID().toString()+".png", "drawing");
+//                    if (imgSaved != null) {
+//                        Toast savedtoast = Toast.makeText(getApplicationContext(), "Drawing saved to Gallery", Toast.LENGTH_SHORT);
+//                        savedtoast.show();
+//                    } else {
+//                        Toast unsaved = Toast.makeText(getApplicationContext(),"Image could not saved", Toast.LENGTH_SHORT);
+//                        unsaved.show();
+//                    }
+//                    drawView.destroyDrawingCache();
                 }
             });
             saveDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -323,6 +349,11 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
             public void onOk(AmbilWarnaDialog dialog, int color) {
                 String pcolor = "#" + String.format("%06X", (0xFFFFFF & color));
                 currColor = pcolor;
+                SharedPreferences settings = getSharedPreferences("GAME_DATA", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putString("CURR_COLOR", currColor);
+                editor.commit();
+
                 drawView.setColor(pcolor);
             }
         });
