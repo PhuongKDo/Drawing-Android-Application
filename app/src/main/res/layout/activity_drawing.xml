@@ -12,18 +12,16 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:layout_gravity="center"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp">
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
 
         <ImageButton
             android:id="@+id/new_btn"
-            android:layout_width="40dp"
+            android:layout_width="46dp"
             android:layout_height="40dp"
             android:background="@drawable/border"
-            android:src="@drawable/ic_new_documen"
-            android:contentDescription="@string/start_now" />
+            android:contentDescription="@string/start_now"
+            android:src="@drawable/ic_new_documen" />
         <ImageButton
             android:id="@+id/draw_btn"
             android:layout_width="40dp"
@@ -93,9 +91,17 @@
         android:id="@+id/paint_colors"
         android:layout_gravity="center"
         android:orientation="horizontal"
-        android:background="#D5D6D8"
+        android:background="#FAF5EE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+        <ImageButton
+            android:background="#000"
+            android:contentDescription="@string/paint"
+            android:onClick="paintClicked"
+            android:src="@drawable/paint"
+            android:tag="#ff6600"
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
         <ImageButton
             android:background="#ff6600"
             android:contentDescription="@string/paint"
@@ -196,6 +202,7 @@
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <Button
                 android:id="@+id/b_prev"
                 android:layout_width="100dp"

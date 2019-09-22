@@ -11,6 +11,8 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -32,6 +34,7 @@ import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import com.github.chrisbanes.photoview.PhotoView;
+import android.view.Window;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -56,6 +59,7 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
     private TextView textView;
     private String currColor = "#000000";
     public int pcolor =0xFF660000;
+    private ModeSoloDraw modeSoloDrawView;
 
     private Button next, prev;
 //    , redobtn, undobtn, flipbtn, linebtn, bucketbtn, increase
@@ -228,26 +232,33 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.increase_btn) {
-            final AlertDialog.Builder alertDialog= new AlertDialog.Builder(this);
+            final AlertDialog.Builder alertDialog= new AlertDialog.Builder(this, android.R.style.Theme_DeviceDefault_Light_Dialog);
 
             alertDialog.setTitle("Brush Size");
 
             final SeekBar seek = new SeekBar(this);
             seek.setMax(255);
             seek.setKeyProgressIncrement(1);
-
+            seek.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+            Drawable progressDrawable = getResources().getDrawable(R.drawable.roundcorner);
+            seek.setProgressDrawable(progressDrawable);
             alertDialog.setTitle("Please select your brush size. ");
             alertDialog.setView(seek);
             seek.setProgress(size);
+
 
             alertDialog.setMessage("Current brush size: " + size);
 
             seek.getProgressDrawable().setColorFilter(new PorterDuffColorFilter(Color.RED, PorterDuff.Mode.MULTIPLY));
 
             final AlertDialog dialog = alertDialog.create();
+//            LayoutInflater inflater = this.getLayoutInflater();
+//            dialog.setView(inflater.inflate(R.layout.brushsize_dialog, null));
+
             seek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    final TextView t_view = new TextView(getApplicationContext());
                     newsize = progress;
                     dialog.setMessage("Current brush size: " + progress);
                 }
@@ -260,9 +271,6 @@ public class ModeSoloDraw extends AppCompatActivity implements View.OnClickListe
                 public void onStopTrackingTouch(SeekBar seekBar) {
                 }
             });
-
-//            LayoutInflater inflater = this.getLayoutInflater();
-//            dialog.setView(inflater.inflate(R.layout.brushsize_dialog, null));
 
             dialog.setButton(dialog.BUTTON_POSITIVE, "OK",
                     new DialogInterface.OnClickListener() {
