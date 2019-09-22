@@ -29,6 +29,7 @@
         <activity android:name=".DrawingView" />
         <activity android:name=".ModeSolo" />
         <activity android:name=".ModeSoloDraw" />
+        <activity android:name=".List" />
 
     </application>
 

@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity{
         btnImage1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent Mpicker= new Intent(MainActivity.this, ModeList.class);
+                Intent Mpicker= new Intent(MainActivity.this, List.class);
                 startActivity(Mpicker);
             }
         });
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity{
         btnImage2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent Mpicker= new Intent(MainActivity.this, ModeList.class);
+                Intent Mpicker= new Intent(MainActivity.this, List.class);
                 startActivity(Mpicker);
             }
         });
