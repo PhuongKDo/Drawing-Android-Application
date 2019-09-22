@@ -1,20 +1,26 @@
 package com.example.fatla.mooncatcanvas;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.support.v7.widget.RecyclerView.*;
+import static java.security.AccessController.getContext;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder> implements Filterable {
 
@@ -23,7 +29,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     List<NewsItem> mData ;
     List<NewsItem> mDataFiltered ;
     boolean isDark = false;
-
+    View layout;
 
     public NewsAdapter(Context mContext, List<NewsItem> mData, boolean isDark) {
         this.mContext = mContext;
@@ -45,11 +51,12 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
         View layout;
         layout = LayoutInflater.from(mContext).inflate(R.layout.item_news,viewGroup,false);
+
         return new NewsViewHolder(layout);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NewsViewHolder newsViewHolder, int position) {
+    public void onBindViewHolder(@NonNull NewsViewHolder newsViewHolder, final int position) {
 
         // bind data here
 
@@ -71,7 +78,16 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         newsViewHolder.tv_date.setText(mDataFiltered.get(position).getDate());
         newsViewHolder.img_user.setImageResource(mDataFiltered.get(position).getUserPhoto());
 
+        newsViewHolder.tv_content.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
+                //carry title over
+                Intent intent = new Intent(mContext, ModeList.class);
+                intent.putExtra("title", mDataFiltered.get(position).getTitle());
+                mContext.startActivity(intent);
+            }
+        });
 
     }
 
@@ -129,7 +145,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
     }
 
-    public class NewsViewHolder extends RecyclerView.ViewHolder {
+    public class NewsViewHolder extends ViewHolder {
 
 
 
